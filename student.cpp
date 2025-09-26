@@ -1,4 +1,4 @@
-#include "Student.hpp"
+#include "student.h"
 #include <iostream>
 using namespace std;
 
@@ -64,25 +64,58 @@ int Student::getStudentNumber() const
  ===============NEED HELP FINISHING THIS PART====================
 
 // P). Program Grades
-void setProgramGrade()
-{
-    
+*/
+
+void Student::setProgramGrade(int i, double grade) {
+    programs[i-1] = grade; // if programming assingment is i, index is i-1
 }
+
+
 // T) Record Test Grade
-void Student::setTestGrade(double g){
-    
+void Student::setTestGrade(int i, double grade) {
+    tests[i-1] = grade; // if test is number i, index is i-1
 }
 
 // F) Record Final Exam Grade
-void Student::setFinalExamGrade(double grade){
-    
+void Student::setFinalExamGrade(double grade) {
+    finalExam = grade;
 }
 
 // Calculations
-double Student::calcFinalGrade(int testWeight, int finalWeight) const{
+
+double Student::calcProgramAverage(int num_Of_Programs) const {
+    double sum; // holding sum of all grades
+    for (int i = 0; i < num_Of_Programs; i++) {
+        sum += programs[i];
+    }
+    return sum / num_Of_Programs; // returning avg grade of all prog
+}
+
+double Student::calcTestAverage(int num_Of_Tests) const {
+    double sum; // holding sum of all grades
+    for(int i = 0; i < num_Of_Tests; i++) { 
+        sum += tests[i];
+    }
+    return sum / num_Of_Tests; // returning avg grade of all tests
+}
+
+
+double Student::calcFinalGrade(double programmingW, double testsW, double finalW, double avgTestGrade, double avgProgrammingGrade) const {
+    // changing percentage to decimal
+    programmingW = programmingW / 100;
+    testsW = testsW / 100;
+    finalW = finalW / 100;
+    // calculating each final grade
+    double finalTestGrade = testsW * avgTestGrade;
+    double finalProgrammingGrade = programmingW * avgProgrammingGrade;
+    double finalExamGrade = finalW * finalExam;
+    // returning sum of grade for all categories
+    return finalTestGrade + finalProgrammingGrade + finalExamGrade;
+
     
 }
 
+/*
 // O). Output Student/Grade Data
 void Student::printInfo() const{
     
