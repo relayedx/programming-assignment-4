@@ -8,7 +8,7 @@ using namespace std;
 const int MAX_PROGRAMS = 6;
 const int MAX_TESTS = 4;
 
-class Student{
+class Student {
 private:
     //Student Identifyers
     string firstName, lastName;
@@ -52,10 +52,11 @@ public:
     
     //Q. Quit (in main)
     
+    
     // File functions
     void writeDat(ofstream& out, int programs, int tests, int finals) const;
     void readDat(ifstream& in, int programs, int tests, int finals) const;
-
+    
 };
 
 #endif // STUDENT_H

@@ -60,11 +60,11 @@ int Student::getStudentNumber() const
     return studentNumber;
 }
 
-/*
- ===============NEED HELP FINISHING THIS PART====================
+
+
 
 // P). Program Grades
-*/
+
 
 void Student::setProgramGrade(int i, double grade) {
     programs[i-1] = grade; // if programming assingment is i, index is i-1
@@ -116,22 +116,23 @@ double Student::calcFinalGrade(double programmingW, double testsW, double finalW
 }
 
 /*
+
+ ===============NEED HELP FINISHING THIS PART====================
+*/
 // O). Output Student/Grade Data
-void Student::printInfo() const{
+void Student::printInfo(ofstream& out, int programs, int tests, int finals, int programmingW, int testsW, int finalW) const {
     
 }
 
 // Q). Quit (in main), no code required 
 
 //File functions
-void writeDat()
-{
+void Student::writeDat(ofstream& out, int programs, int tests, int finals) const {
     
 }
 
-void readDat()
-{
+void Student::readDat(ifstream& in, int programs, int tests, int finals) const {
     
 }
 
-*/
+

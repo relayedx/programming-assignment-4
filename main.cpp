@@ -45,7 +45,7 @@ void menu()
 {
     //Print Menu
     cout << "================ GRADE BOOK ================" << endl;
-    cout << "S). Set Up New Semester"
+    cout << "S). Set Up New Semester" << endl
     << "A). Add A Student" << endl
     << "P). Record Programming Assignment Grade for All Students" << endl
     << "T). Record Test Grade for All Students" << endl
@@ -53,9 +53,9 @@ void menu()
     << "C). Change a Grade for a Particular Student" << endl
     << "G). Calculate Final Grade" << endl
     << "O). Output Grade Data" << endl
-    << "Q). Quit." << endl;
+    << "Q). Quit." << endl << endl;
     
-    while (true){ //While loop incase of input error
+    while (true) { //While loop incase of input error
     
         string input;
         cin >> input;
@@ -157,7 +157,10 @@ void setUpNewSemester() // S - Call function in case/switch
         }
         
     } while (programsW + testsW + finalsW != 100);
+
+    menu();
 }
+
 void addStudent() // A - Call function in case/switch
 {
     //Gather student identifiers
@@ -174,7 +177,10 @@ void addStudent() // A - Call function in case/switch
     cin >> id;
     
     roster[rosterSize++] = Student(last, first, id); //Add data to student array
+
+    menu();
 }
+
 void recordProgramGrade() // P - Call function in case/switch
 {
     int p; //Programming index - Select which programming assignment
@@ -189,8 +195,11 @@ void recordProgramGrade() // P - Call function in case/switch
         cin >> grade;
         roster[i].setProgramGrade(p, grade);
     }
+
+    menu();
 }
-void recordTestGrade() // T - Call function in case/switch
+
+void recordTestGrade() // T - Call function in case/switch 
 {
     int t; //Tests index - Select which test
     cout << "Enter test number: ";
@@ -204,7 +213,10 @@ void recordTestGrade() // T - Call function in case/switch
         cin >> grade;
         roster[i].setTestGrade(t, grade);
     }
+
+    menu();
 }
+
 void recordFinalGrade() // F - Call function in case/switch
 {
     //Only 1 final exam, no need for final index
@@ -215,69 +227,86 @@ void recordFinalGrade() // F - Call function in case/switch
         cin >> grade;
         roster[i].setFinalExamGrade(grade);
     }
+
+    menu();
 }
+
 void changeGrade() // C - Call function in case/switch
 {
+    bool condition = true;
+    char choice;
     int id;
+    int index;
     cout << "Enter student ID: ";
     cin >> id;
     
     // Traverse through list of student ID's
-    for (int i = 0; i < rosterSize; i++)
-    {
-        if (roster[i].getStudentNumber() == id)
-        {
-            char choice;
-            cout << "Change Programming (P), Test (T), or Final (F) grades? ";
-            cin >> choice;
-            
-            if (choice == 'P' || choice == 'p')
-            {
-                int index;
-                double grade;
-                
-                //Update Grade by choosing an index, new grade, then calling setProgramGrade
-                
-                cout << "Enter program assignment number (index): ";
-                cin >> index;
-                
-                cout << "Enter new grade: ";
-                cin >> grade;
-                
-                roster[i].setProgramGrade(index, grade);
-            }
-            else if (choice == 'T' || choice == 't')
-            {
-                int index;
-                double grade;
-                
-                //Update Grade by choosing an index, new grade, then calling setTestGrade
-                cout << "Enter test number (index): ";
-                cin >> index;
-                
-                cout << "Enter new grade: ";
-                cin >> grade;
-                
-                roster[i].setTestGrade(index, grade);
-            }
-            else if (choice == 'F' || choice == 'f')
-            {
-                double grade;
-                
-                //Update Grade by new grade, then calling setFinalExamGrade
-                
-                cout << "Enter new final grade: ";
-                cin >> grade;
-                
-                roster[i].setFinalExamGrade(grade);
-            }
+    for (int i = 0; i < rosterSize; i++) {
+        if (roster[i].getStudentNumber() == id) {
+            index = i;
+        } else {
+            cout << "ERROR! Student not found. " << endl;
             return;
         }
     }
     
-    //If not found, for loop is skipped.
-    cout << "ERROR! Student not found. " << endl;
+    do {
+        cout << "Change Programming (P), Test (T), or Final (F) grades? ";
+        cin >> choice;
+    
+
+        if (choice == 'P' || choice == 'p')
+        {
+            int num;
+            double grade;
+            
+            //Update Grade by choosing number, new grade, then calling setProgramGrade
+            
+            cout << "Enter program assignment number: ";
+            cin >> num;
+            
+            cout << "Enter new grade: ";
+            cin >> grade;
+            
+            roster[index].setProgramGrade(num, grade);
+            condition = false;
+        }
+        else if (choice == 'T' || choice == 't')
+        {
+            int num;
+            double grade;
+            
+            //Update Grade by choosing number, new grade, then calling setTestGrade
+            cout << "Enter test number: ";
+            cin >> num;
+            
+            cout << "Enter new grade: ";
+            cin >> grade;
+            
+            roster[index].setTestGrade(num, grade);
+            condition = false;
+        }
+        else if (choice == 'F' || choice == 'f')
+        {
+            double grade;
+            
+            //Update Grade by new grade, then calling setFinalExamGrade
+            
+            cout << "Enter new final grade: ";
+            cin >> grade;
+            
+            roster[index].setFinalExamGrade(grade);
+            condition = false;
+        } 
+        else {
+            cout << "Error. Must be a valid entry.";
+        }
+    } while (condition);
+
+    menu();
+    
 }
+
 void calculateFinal() // G - Call function in case/switch
 {
     for (int i = 0; i < rosterSize; i++) //Traverse through Student list
@@ -288,6 +317,8 @@ void calculateFinal() // G - Call function in case/switch
         cout << roster[i].getLastName() << ", " << roster[i].getFirstName()
         << " (Final Grade): " << finalGrade << endl;
     }
+
+    menu();
 }
 void outputGrades() // O - Call function in case/switch
 {
@@ -302,6 +333,8 @@ void outputGrades() // O - Call function in case/switch
     }
     
     cout << "(Grades.out Output)" << endl;
+
+    menu();
 }
 //(Q) Quit - Call function to save dat file, then break loop in case/switch
 
