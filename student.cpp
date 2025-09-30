@@ -61,10 +61,7 @@ int Student::getStudentNumber() const
 }
 
 
-
-
 // P). Program Grades
-
 
 void Student::setProgramGrade(int i, double grade) {
     programs[i-1] = grade; // if programming assingment is i, index is i-1
@@ -84,7 +81,7 @@ void Student::setFinalExamGrade(double grade) {
 // Calculations
 
 double Student::calcProgramAverage(int num_Of_Programs) const {
-    double sum; // holding sum of all grades
+    double sum = 0.0; // holding sum of all grades
     for (int i = 0; i < num_Of_Programs; i++) {
         sum += programs[i];
     }
@@ -92,8 +89,8 @@ double Student::calcProgramAverage(int num_Of_Programs) const {
 }
 
 double Student::calcTestAverage(int num_Of_Tests) const {
-    double sum; // holding sum of all grades
-    for(int i = 0; i < num_Of_Tests; i++) { 
+    double sum = 0.0; // holding sum of all grades
+    for(int i = 0; i < num_Of_Tests; i++) {
         sum += tests[i];
     }
     return sum / num_Of_Tests; // returning avg grade of all tests
