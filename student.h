@@ -19,7 +19,6 @@ private:
     double tests[MAX_TESTS];
     double finalExam;
     
-    
 public:
     Student(); // Default constructor
     Student(const string& last, const string& first, int id); // Name
@@ -45,7 +44,6 @@ public:
     double calcProgramAverage(int num_Of_Programs) const; // Programming assignment average
     double calcTestAverage(int num_Of_Tests) const; // Exam average
     double calcFinalGrade(double programmingW, double testsW, double finalW, double avgTestGrade, double avgProgrammingGrade) const; //Weighted final grade, W = weight
-
 
     //O). Output Student/Grade Data
     void printInfo(ofstream& out, int programs, int tests, int finals, int programmingW, int testsW, int finalW) const;
