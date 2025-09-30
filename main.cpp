@@ -246,6 +246,15 @@ void changeGrade() // C - Call function in case/switch
             index = i;
         } else {
             cout << "ERROR! Student not found. " << endl;
+            cout << "S). Set Up New Semester" << endl
+            << "A). Add A Student" << endl
+            << "P). Record Programming Assignment Grade for All Students" << endl
+            << "T). Record Test Grade for All Students" << endl
+            << "F). Record Final Exam Grade for All Students" << endl
+            << "C). Change a Grade for a Particular Student" << endl
+            << "G). Calculate Final Grade" << endl
+            << "O). Output Grade Data" << endl
+            << "Q). Quit.";
             return;
         }
     }
