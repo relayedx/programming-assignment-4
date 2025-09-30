@@ -8,7 +8,7 @@ using namespace std;
 const int MAX_PROGRAMS = 6;
 const int MAX_TESTS = 4;
 
-class Student{
+class Student {
 private:
     //Student Identifyers
     string firstName, lastName;
@@ -18,7 +18,6 @@ private:
     double programs[MAX_PROGRAMS];
     double tests[MAX_TESTS];
     double finalExam;
-    
     
 public:
     Student(); // Default constructor
@@ -46,16 +45,16 @@ public:
     double calcTestAverage(int num_Of_Tests) const; // Exam average
     double calcFinalGrade(double programmingW, double testsW, double finalW, double avgTestGrade, double avgProgrammingGrade) const; //Weighted final grade, W = weight
 
-
     //O). Output Student/Grade Data
     void printInfo(ofstream& out, int programs, int tests, int finals, int programmingW, int testsW, int finalW) const;
     
     //Q. Quit (in main)
     
+    
     // File functions
     void writeDat(ofstream& out, int programs, int tests, int finals) const;
     void readDat(ifstream& in, int programs, int tests, int finals) const;
-
+    
 };
 
 #endif // STUDENT_H
